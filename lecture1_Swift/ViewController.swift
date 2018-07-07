@@ -10,14 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     //lazy can't use didSet {}
-    lazy var game = Concentration(numberOfPairsOfCards:(CardButtons.count + 1) / 2 )
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-            
-            
-        }
-    }
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
@@ -41,6 +33,22 @@ class ViewController: UIViewController {
         
     
     }
+    /* func NewGameButton(_ sender: UIButton) {
+        flipCount=0
+flipCountLabel.text = "Flips: \(flipCount)"
+        for i in CardButtons.indices{
+            let button = CardButtons[i]
+            var card = game.cards[i]
+            button.setTitle("", for: UIControlState.normal)
+            button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            card.isFaceup =  false
+            card.isMatched = false
+            emoji[card.identifier] = nil
+            
+     }}*/
+        
+        
+    
     
     func updateViewFromModel(){
         for index in CardButtons.indices{
@@ -55,7 +63,29 @@ class ViewController: UIViewController {
         }
         }   }
     
-    var emojiChoices:Array<String> = ["😱","🦉","👻","🎃","😈","🍭","🎱","🙀","🦇"]
+    
+    
+    var numberOfPairsOfCards:Int {
+        return (CardButtons.count + 1 ) / 2
+    }
+    
+    lazy var game = Concentration(numberOfPairsOfCards:(numberOfPairsOfCards))
+    
+    
+    
+    var flipCount = 0 {
+        didSet {
+            flipCountLabel.text = "Flips: \(flipCount)"
+            
+            
+            
+            
+            
+        }
+    }
+
+    
+    var emojiChoices:Array<String> = ["😱","🦉","👻","🎃","😈","🍭","🎱","🙀","🦇","🤖","☠️","🐞"]
 
     
     var emoji = Dictionary<Int,String>()

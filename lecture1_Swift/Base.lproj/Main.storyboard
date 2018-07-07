@@ -123,6 +123,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5Z-yC-2wN">
                                                 <rect key="frame" x="269.5" y="0.0" width="73.5" height="30"/>
                                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lPx-fL-3zm"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -187,11 +190,11 @@
                         <outletCollection property="CardButtons" destination="6Ft-bS-541" collectionClass="NSMutableArray" id="AgU-KH-p6Y"/>
                         <outletCollection property="CardButtons" destination="r9R-v7-c3b" collectionClass="NSMutableArray" id="bwW-jT-oGq"/>
                         <outletCollection property="CardButtons" destination="BaR-i9-qks" collectionClass="NSMutableArray" id="Ih7-Gn-I1H"/>
-                        <outletCollection property="CardButtons" destination="P5Z-yC-2wN" collectionClass="NSMutableArray" id="BG7-zd-AzD"/>
                         <outletCollection property="CardButtons" destination="KPN-sr-cEn" collectionClass="NSMutableArray" id="fez-Rj-Wjm"/>
                         <outletCollection property="CardButtons" destination="PeR-6S-aUW" collectionClass="NSMutableArray" id="T8U-uK-Wn0"/>
                         <outletCollection property="CardButtons" destination="Mry-Ce-OtG" collectionClass="NSMutableArray" id="8sb-ta-yNL"/>
                         <outletCollection property="CardButtons" destination="UoE-KR-Fgq" collectionClass="NSMutableArray" id="0Oo-S6-zda"/>
+                        <outletCollection property="CardButtons" destination="P5Z-yC-2wN" collectionClass="NSMutableArray" id="uhB-Xa-LNj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
