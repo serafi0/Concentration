@@ -11,14 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     //lazy can't use didSet {}
     
-    @IBOutlet weak var flipCountLabel: UILabel!
+     @IBOutlet private weak var flipCountLabel: UILabel!
     
     
-    @IBOutlet var CardButtons: [UIButton]!
+     @IBOutlet private var CardButtons: [UIButton]!
     
     
     
-    @IBAction func touchCard(_ sender: UIButton) {
+     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let CardNumber = CardButtons.index(of: sender){
 
@@ -64,12 +64,12 @@ flipCountLabel.text = "Flips: \(flipCount)"
         }   }
     
     
-    
+    //not settable
     var numberOfPairsOfCards:Int {
         return (CardButtons.count + 1 ) / 2
     }
     
-    lazy var game = Concentration(numberOfPairsOfCards:(numberOfPairsOfCards))
+   private  lazy var game = Concentration(numberOfPairsOfCards:(numberOfPairsOfCards))
     
     
     
@@ -85,22 +85,47 @@ flipCountLabel.text = "Flips: \(flipCount)"
     }
 
     
-    var emojiChoices:Array<String> = ["😱","🦉","👻","🎃","😈","🍭","🎱","🙀","🦇","🤖","☠️","🐞"]
+    private var emojiChoices:Array<String> = ["😱","🦉","👻","🎃","😈","🍭","🎱","🙀","🦇","🤖","☠️","🐞"]
 
     
-    var emoji = Dictionary<Int,String>()
+   private  var emoji = Dictionary<Int,String>()
     
-    func emoji(for card:Card) ->String
+   private func emoji(for card:Card) ->String
     {
         if emoji[card.identifier] == nil , emojiChoices.count > 0{
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        
+            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
             }
       return emoji[card.identifier] ?? "?"
         
     }
 }
+
+
+extension Int {
+    
+    var arc4random: Int {
+        if self > 0{
+            return Int(arc4random_uniform(UInt32(self)))
+            
+        }else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        }
+        else {
+            return 0
+        }
+    }
+
+    
+    
+}
+
+
+
+
+
+
+
     
     
     

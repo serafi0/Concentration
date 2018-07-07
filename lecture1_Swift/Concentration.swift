@@ -10,13 +10,14 @@ import Foundation
 //classes are referncce types
 class Concentration
 {
+    //Can access cards but can't set them
+    private (set) var cards = Array<Card>()
     
-    var cards = Array<Card>()
-    
-    var indexOfOneAndOnlyFaceUpCard: Int?{
+    private var indexOfOneAndOnlyFaceUpCard: Int?{
         get{
             var foundIndex:Int?
             for index in cards.indices{
+                
                 if cards[index].isFaceup{
                 if foundIndex == nil{
                     foundIndex = index
@@ -39,6 +40,9 @@ class Concentration
     }
     
     func chooseCard(at index: Int){
+        
+        assert(cards.indices.contains(index), "concerntration.chooseCard(at: \(index): index not in the cardss ")
+        
         if !cards[index].isMatched{
             if let matchIndex = indexOfOneAndOnlyFaceUpCard , matchIndex != index{
                 //check  card matched 1:05:21
@@ -77,7 +81,7 @@ extension MutableCollection {
         guard c > 1 else { return }
         
         for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
-            // Change `Int` in the next line to `IndexDistance` in < Swift 4.1
+            // Change 'Int' in the next line to 'IndexDistance' in < Swift 4.1
             let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
             let i = index(firstUnshuffled, offsetBy: d)
             swapAt(firstUnshuffled, i)
