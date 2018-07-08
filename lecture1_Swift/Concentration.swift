@@ -8,7 +8,7 @@
 
 import Foundation
 //classes are referncce types
-class Concentration
+struct Concentration
 {
     //Can access cards but can't set them
     private (set) var cards = Array<Card>()
@@ -39,14 +39,14 @@ class Concentration
         }
     }
     
-    func chooseCard(at index: Int){
+    mutating func chooseCard(at index: Int){
         
         assert(cards.indices.contains(index), "concerntration.chooseCard(at: \(index): index not in the cardss ")
         
         if !cards[index].isMatched{
             if let matchIndex = indexOfOneAndOnlyFaceUpCard , matchIndex != index{
                 //check  card matched 1:05:21
-                if cards[matchIndex].identifier == cards[index].identifier
+                if cards[matchIndex] == cards[index]
                 {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
